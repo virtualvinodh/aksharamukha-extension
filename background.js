@@ -61,6 +61,12 @@ chrome.tabs.onUpdated.addListener(function(tabId,changeInfo,tab){
 });
 
 function convertSite() {
+  chrome.tabs.insertCSS({
+    file: "aksharamukha-notomirror.css"
+  });
+  chrome.tabs.insertCSS({
+    file: "aksharamukha-fonts.css"
+  });
     chrome.tabs.insertCSS({
       file: "fonts.css"
     });
