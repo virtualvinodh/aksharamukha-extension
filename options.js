@@ -178,6 +178,14 @@ preOptionsEl.forEach(function(opt) {
 outputClass = ScriptMixin.methods.getOutputClass(target, postOptionsList)
 
 chrome.tabs.insertCSS({
+  file: "aksharamukha-notomirror.css"
+});
+
+chrome.tabs.insertCSS({
+  file: "aksharamukha-fonts.css"
+});
+
+chrome.tabs.insertCSS({
   file: "fonts.css"
 });
 
