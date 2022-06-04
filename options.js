@@ -2,12 +2,13 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-var scripts = ScriptMixin.data().scriptsIndic;
+var scripts = ScriptMixin.data().scriptsIndic.concat(ScriptMixin.data().scriptsSemitic).sort((a, b) => (a.label > b.label) ? 1 : -1).filter(x => !['Hebr', 'Thaa', 'Arab-Ur', 'Arab-Pa'].includes(x.value));
 var postOptions = ScriptMixin.data().postOptionsGroup;
-var preOptions = ScriptMixin.data().preOptionsGroup;
+var preOptions = {...ScriptMixin.data().preOptionsGroup,...ScriptMixin.data().preOptionsSemitic};
+console.log(preOptions)
 var preserveSourceDetails = ScriptMixin.data().preserveSourceExampleOut
 
-var scriptsLTR = ['Urdu', 'Thaana', 'HanifiRohingya']
+var scriptsLTR = ['Urdu', 'Thaana', 'HanifiRohingya', 'Arab', 'Arab-Fa']
 
 scriptList = []
 ScriptMixin.data().scriptsIndic.forEach(function(e) {
@@ -18,7 +19,8 @@ scriptList.push('ISO')
 scriptList.push('IAST')
 scriptList.push('IASTPali')
 scriptList.push('RomanReadable')
-scriptList.push('IPA')
+scriptList.push('IPA Indic')
+scriptList.push('RomanSemitic')
 scriptList.push('Original')
 
 // Selection Items
@@ -32,9 +34,10 @@ selectMid2 = '<option value="original" selected> Original script </option>'
 
 selectMid += '<option value="IAST">IAST</option>'
 selectMid += '<option value="IASTPali">IAST (Pali)</option>'
-selectMid += '<option value="ISO">ISO</option>'
-selectMid += '<option value="RomanReadable">Readable Roman</option>'
-selectMid += '<option value="IPA">IPA</option>'
+selectMid += '<option value="ISO">ISO (Indic)</option>'
+selectMid += '<option value="RomanReadable">Readable Roman (Indic)</option>'
+selectMid += '<option value="IPA">IPA (Indic)</option>'
+selectMid += '<option value="Latn">Roman (Semitic)</option>'
 
 scripts.forEach(function(script) {
   selectMid += '<option value="' + script.value + '">' + script.label + "</option>"

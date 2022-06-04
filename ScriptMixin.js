@@ -33,8 +33,11 @@
       consonantsSinhala: ['n*g', 'n*j', 'n*D', 'n*d', 'm*b'],
       ayogavahasAll: ['~', 'M', 'H'],
       vedicScripts: ['Assamese', 'Bengali', 'Devanagari', 'Gujarati', 'Kannada', 'Malayalam', 'Oriya', 'Gurmukhi', 'Tamil', 'Telugu', 'TamilExtended', 'Grantha'],
+      vocalized: ['Hebr', 'Syrj', 'Syrn', 'Arab-Fa', 'Latn', 'Type', 'Arab', 'Arab-Ur', 'Thaa'],
       preserveSourceExampleOut: {
         'Hiragana': 'hulasi → ほぅら゚すぃ not  ふらし',
+        'Latn': 'ʼiylwn māsk → ˀîylwn mʾsk',
+        'Arab': 'g v p → ڨ ڤ پ',
         'Katakana': 'hulasi → ホゥラ゚スィ not  フラシ',
         'WarangCiti': 'akṣaramukha → <span class="warangciti">𑣁𑣌‍𑣝𑣜𑣖𑣃𑣌‍𑣙</span> not <span class="warangciti">𑣁𑣌𑣞𑣜𑣖𑣃𑣌</span>',
         'Modi': 'ki kī ku kū → <span class="modi">𑘎𑘱 𑘎𑘲 𑘎𑘳 𑘎𑘴</span> not <span class="modi">𑘎𑘲 𑘎𑘲 𑘎𑘳 𑘎𑘳</span>',
@@ -50,7 +53,7 @@
         'Gujarati': 'kŏl → <span class="gujarati">કો˘લ્</span> not <span class="gujarati">કોલ્</span>',
         'Oriya': 'vināyaka → <span class="oriya">ୱିନାଯକ</span> not <span class="oriya">ବିନାୟକ</span><br/>kŏlæṭ → <span class="oriya">କୋ˘ଲେʼଟ୍</span> not <span class="oriya">କୋଲେଟ୍</span>',
         'Assamese': 'vināyaka → <span class="assamese">ৱিনাযক</span> not <span class="assamese">ৱিনায়ক</span><br/>kŏlæṭ → <span class="assamese">কো˘লেʼট্</span> not <span class="assamese">কোলেট্</span>',
-        'Bengali': 'vināyaka → <span class="bengali">ৱিনাযক</span> not <span class="bengali">বিনায়ক</span><br/>kŏlæṭ → <span class="bengali">কো˘লেʼট্</span> not <span class="bengali">কোলেট্</span>',
+        'Bengali': 'vināyaka → <span class="bengali">ভ়িনাযক</span> not <span class="bengali">বিনায়ক</span><br/>kŏlæṭ → <span class="bengali">কো˘লেʼট্</span> not <span class="bengali">কোলেট্</span>',
         'Limbu': 'jha ña ṣa ṃ → <span class="limbu">ᤉ ᤊ ᤚ ᤲ</span> not <span class="limbu">ᤈ ᤏ ᤙ ᤱ</span>',
         'MeeteiMayek': 'kūṭākṣara → <span class="meeteimayek">ꯀꫬꫤꯥꯛꫪꯔ</span> not <span class="meeteimayek">ꯀꯨꯇꯥꯛꯁꯔ</span>',
         'Tamil': 'maṃtana → <span class="tamil">மம்ʼதந</span> not <span class="tamil">மந்தன</span>',
@@ -59,21 +62,174 @@
         'Kannada': 'khaṇḍam → <span class="kannada">ಖಣ್ಡಮ್</span> not <span class="kannada">ಖಂಡಂ</span> <br/> kæpôḍ → <span class="kannada">ಕೆʼಪಾʼಡ್</span> not <span class="telugu">ಕೆಪಾಡ್</span>',
         'Devanagari': 'san̆dahan → <span class="devanagari">सँˆदहन्</span> not <span class="devanagari">सँदहन्</span>',
         'Sinhala': 'kôṭ hām̐ → <span class="sinhala">කාʼට් හූංʼ</span> not <span class="sinhala">කාට් හූං</span>',
-        'Hebrew': 'svāhā → <span class="sinhala">סְוָהָ</span> not <span class="sinhala">סְבָהָה</span>'
+        'Hebrew': 'svāhā → <span class="sinhala">סְוָהָ</span> not <span class="sinhala">סְבָהָה</span>',
+        'Nandinagari': 'saṅgha → <span class="nandinagari">𑧍𑦲𑧠𑦱</span> not <span class="nandinagari">𑧍𑧞𑦱</span>'
 
       },
       preserveSourceExampleIn: {
       },
+      preOptionsIndic: {
+        'Syrj': [
+          { label: 'Lack of vowel signs as pure consonant <br/> <small> lâylēyn  ←  <span class="syrj">ܠܐܲܝܠܹܝܢ</span>', value: 'insertViramaSyriac' }
+        ],
+        'Syrn': [
+          { label: 'Lack of vowel signs as pure consonant <br/> <small> lâylēyn  ←  <span class="syrn">ܠܐܲܝܠܹܝܢ</span>', value: 'insertViramaSyriac' }
+        ],
+        'Hebrew': [
+          {
+            label: 'Treat all shvas as <i>shva nakh</i>',
+            value: 'shvanakhall'
+          },
+          {
+            label: '<i>Holam</i> denotes long /o/',
+            value: 'holamlong'
+          },
+          {
+            label: 'Vowels are not marked<br/><small></small>',
+            value: 'novowelshebrewIndic'
+          }
+        ],
+        'Armi': [
+          {
+            label: 'Aleph as mater lectionis<br/><small> kʾ → kā</small>',
+            value: 'AlephMaterLectionis'
+          }
+        ],
+        'Elym': [
+          {
+            label: 'Aleph as mater lectionis<br/><small> kʾ → kā</small>',
+            value: 'AlephMaterLectionis'
+          }
+        ],
+        'Ethi': [
+          {
+            label: 'Aleph as mater lectionis<br/><small> kʾ → kā</small>',
+            value: 'AlephMaterLectionis'
+          }
+        ],
+        'Hatr': [
+          {
+            label: 'Aleph as mater lectionis<br/><small> kʾ → kā</small>',
+            value: 'AlephMaterLectionis'
+          }
+        ],
+        'Phli': [
+          {
+            label: 'Aleph as mater lectionis<br/><small> kʾ → kā</small>',
+            value: 'AlephMaterLectionis'
+          }
+        ],
+        'Prti': [
+          {
+            label: 'Aleph as mater lectionis<br/><small> kʾ → kā</small>',
+            value: 'AlephMaterLectionis'
+          }
+        ],
+        'Mani': [
+          {
+            label: 'Aleph as mater lectionis<br/><small> kʾ → kā</small>',
+            value: 'AlephMaterLectionis'
+          }
+        ],
+        'Nbat': [
+          {
+            label: 'Aleph as mater lectionis<br/><small> kʾ → kā</small>',
+            value: 'AlephMaterLectionis'
+          }
+        ],
+        'Narb': [
+          {
+            label: 'Aleph as mater lectionis<br/><small> kʾ → kā</small>',
+            value: 'AlephMaterLectionis'
+          }
+        ],
+        'Sogo': [
+          {
+            label: 'Aleph as mater lectionis<br/><small> kʾ → kā</small>',
+            value: 'AlephMaterLectionis'
+          }
+        ],
+        'Sarb': [
+          {
+            label: 'Aleph as mater lectionis<br/><small> kʾ → kā</small>',
+            value: 'AlephMaterLectionis'
+          }
+        ],
+        'Palm': [
+          {
+            label: 'Aleph as mater lectionis<br/><small> kʾ → kā</small>',
+            value: 'AlephMaterLectionis'
+          }
+        ],
+        'Phnx': [
+          {
+            label: 'Aleph as mater lectionis<br/><small> kʾ → kā</small>',
+            value: 'AlephMaterLectionis'
+          }
+        ],
+        'Phlp': [
+          {
+            label: 'Aleph as mater lectionis<br/><small> kʾ → kā</small>',
+            value: 'AlephMaterLectionis'
+          }
+        ],
+        'Samr': [
+          {
+            label: 'Aleph as mater lectionis<br/><small> kʾ → kā</small>',
+            value: 'AlephMaterLectionis'
+          }
+        ],
+        'Sogd': [
+          {
+            label: 'Aleph as mater lectionis<br/><small> kʾ → kā</small>',
+            value: 'AlephMaterLectionis'
+          }
+        ],
+        'Syre': [
+          {
+            label: 'Aleph as mater lectionis<br/><small> kʾ → kā</small>',
+            value: 'AlephMaterLectionis'
+          }
+        ],
+        'Ugar': [
+          {
+            label: 'Aleph as mater lectionis<br/><small> kʾ → kā</small>',
+            value: 'AlephMaterLectionis'
+          }
+        ]
+      },
+      preOptionSemiticAllIndic: [
+        {
+          label: 'Aleph as mater lectionis<br/><small> kʾ → kā</small>',
+          value: 'AlephMaterLectionis'
+        }
+      ],
+      preOptionsSemitic: {
+        'Hebrew': [
+          {
+            label: 'Nikkuds not shown<br/><small>ב פ כ → k p b not v f ḵ</small>',
+            value: 'novowelshebrewSemitic'
+          }
+        ]
+      },
       preOptionsGroup: {
         'Tamil': [
-          { label: 'Transcribe Tamil <br/><small><span class="tamil">மதம், நகம்</span> → madam, nagam</small>', value: 'TamilTranscribe' },
+          { label: 'Transcribe Tamil (Standard)<br/><small><span class="tamil">மதம், பேசு</span> → madam, pēsu</small>', value: 'TamilTranscribe' },
+          { label: 'Transcribe Tamil (Dialectal)<br/><small><span class="tamil">மதம், பேசு</span> → madam, pēśu</small>', value: 'TamilTranscribeDialect' },
           { label: '<span class="tamil">க2 க3 க4 → க² க³ க⁴</span>', value: 'TamilNumeralSub' }
         ],
         'Itrans': [
           { label: 'E/O for long, e/o for short', value: 'swapEeItrans' }
         ],
+        'Burmese': [
+          { label: 'Segment Burmese Syllables <br/><small><span class="burmese">လေထဲပျော် → လေ ထဲ ပျော်</span>', value: 'segmentBurmeseSyllables' }
+        ],
         'ISO': [
-          { label: 'Treat e/o as long', value: 'longEOISO' }
+          { label: 'Treat e/o as long', value: 'longEOISO' },
+          { label: '<i>tat tvam asi</i> → <i>tattvamasi</i>', value: 'joinVowelConsISO' }
+        ],
+        'IAST': [
+          { label: '<i>tat tvam asi</i> → <i>tattvamasi</i>', value: 'joinVowelConsIAST' }
         ],
         'Hiragana': [
           { label: '/ou/ and /ei/ dipthongs not /ē/ and /ō/', value: 'eiaudipthongs' },
@@ -113,7 +269,8 @@
           { label: 'Schwa deletion (Only word-final) <br/><small><div class="q-mt-sm">राम → rām</div></small>', value: 'SchwaFinalGujarati' }
         ],
         'Bengali': [
-          { label: 'Schwa deletion (Only word-final) <br/><small><div class="q-mt-sm">রাম → rām</div></small>', value: 'SchwaFinalBengali' }
+          { label: 'Schwa deletion (Only word-final) <br/><small><div class="q-mt-sm">রাম → rām</div></small>', value: 'SchwaFinalBengali' },
+          { label: 'য → ẏa & য় → ya', value: 'BengaliSwitchYaYYa' }
         ],
         'Gurmukhi': [
           { label: 'Schwa deletion (Only word-final) <br/><small><div class="q-mt-sm">ਰਾਮ → rām</div</small>>', value: 'SchwaFinalGurmukhi' }
@@ -129,8 +286,10 @@
           { label: 'Sanskrit/Pali orthography text<br/><small><span class="sinhala">e.g. නමො භගවතෙ</span></small>', value: 'SinhalaPali' }
         ],
         'Malayalam': [
-          { label: 'Show Chillus <br/><small><div class="malayalam">ധർമൻ</span> → /dharˍmanˍ/ not /dharman/</div></small>', value: 'ShowChillus' },
-          { label: 'Prakrit orthography text<br/><small><div> e.g. <span class="malayalamold">ബുംധഀ</span></div></small>', value: 'MalayalamPrakrit' }
+          { label: 'Show Chillus <br/><small><span class="malayalam">ധർമൻ</span> → <span class="iast">/dharˍmanˍ/ not /dharman/</span></small>', value: 'ShowChillus' },
+          { label: 'Prakrit orthography text<br/><small><div>e.g.<span class="malayalam">ബുംധഀ</span></div></small>', value: 'MalayalamPrakrit' },
+          { label: 'Transcribe <i>Samvrutokara</i> (extra-short-u)<br/><small><div> e.g. <span class="malayalam">അവൻ അവന്</span>‌ → <span class="iast">avan avanŭ</span></div></small>', value: 'MalayalamHalfu' },
+          { label: 'Transcribe Malayalam<div><small> e.g. <span class="malayalam"> കൊടുങ്കാട്</span> → kŏḍuṅgāḍŭ</div></small>', value: 'MalayalamTranscribe' }
         ],
         'Siddham': [
           { label: 'Devanagari-based Siddham font', value: 'siddhammukta' }
@@ -140,6 +299,29 @@
         ],
         'Urdu': [
           { label: 'Short vowels not shown', value: 'UrduShortNotShown' }
+        ],
+        'Arab': [
+          { label: '/ج/ as /g/', value: 'ArabicGimelJa' },
+          { label: 'Assume /Sukun/ at end of word <br/> <small>ʾl×muḥīṭ ʾl×hin×diy×꞉ ← الْمُحِيط الْهِنْدِيّ', value: 'removeFinalSchwaArab' }
+        ],
+        'Arab-Fa': [
+          { label: 'Assume /Jazm/ at end of word <br/> <small>ʾbut\u033D ←  بُت', value: 'removeFinalSchwaArab' }
+        ],
+        'Sogd': [
+          { label: 'Disambiguate <span class="sogd">𐽀</span> (Resh-Ayin) as [r-ʿ]', value: 'SogdReshAyin' }
+        ],
+        'Sogo': [
+          { label: 'Disambiguate <span class="sogo">𐼘</span> (Resh-Ayin-Daleth) as [r-ʿ-d]', value: 'SogoReshAyinDaleth' }
+        ],
+        'Phlp': [
+          { label: 'Disambiguate <span class="phlp">𐮋</span> (Mem-Quoph) as [m-q]', value: 'PhlpMemQoph' },
+          { label: 'Disambiguate <span class="phlp">𐮅</span> (Waw-Ayin-Resh) as [w-ʿ-r]', value: 'PhlpWawAyinResh' }
+        ],
+        'Phli': [
+          { label: 'Disambiguate <span class="phli">𐭥</span> (Waw-Ayin-Resh) as [w-ʿ-r]', value: 'PhliWawAyinResh' }
+        ],
+        'Hatr': [
+          { label: 'Disambiguate <span class="hatr">𐣣</span> (Daleth-Resh) as [d-r]', value: 'HatrDalethResh' }
         ],
         'Shahmukhi': [
           { label: 'Short vowels not shown', value: 'UrduShortNotShown' }
@@ -151,20 +333,6 @@
           {
             label: 'Pali orthography text<br/><small> e.g. <span class="chakma">𑄖𑄗𑄂𑄉𑄖</span></small>',
             value: 'ChakmaPali'
-          }
-        ],
-        'Hebrew': [
-          {
-            label: 'Vowels are not marked<br/><small>',
-            value: 'novowelshebrew'
-          },
-          {
-            label: 'Treat all shvas as <i>shva nakh</i>',
-            value: 'shvanakhall'
-          },
-          {
-            label: '<i>Holam</i> denotes long /o/',
-            value: 'holamlong'
           }
         ]
       },
@@ -180,6 +348,9 @@
         'DevanagariLimbu': [
           { label: 'Limbu Devanagari conventions<small><br/><span class="limbu">ᤀᤧ ᤀᤨ ᤀᤧ᤺ ᤁᤧ ᤁᤨ ᤁᤧ᤺</span> → <span class="limbudev">ए़ ओ़ ए़ः के़ को़ के़ः</span></small>', value: 'LimbuDevanagariConvention' }
         ],
+        'BurmeseIASTLOC': [
+          { label: 'Join syllables<small><br/><span>le thai pyo‘ </span> → <span class="burmese">လေထဲပျော်</span></small>', value: 'removeSegmentSpacesBurmese' }
+        ],
         'TamilSaurashtra': [
           { label: 'Convert Saurashtra Haaru as :<small><br/><span class="saurashtra">ꢥꢴꢷ</span> → <span class="tamil">நீ:</span></small>', value: 'SaurastraHaaruColon' }
         ],
@@ -194,6 +365,24 @@
         ],
         'ISOShahmukhi': [
           { label: 'Remove all inherent /a/ <small><br/><span class="urdu">ہندوستان</span> → /hndvstān/ not /hanadavasatāna/', value: 'urduRemoveInherent' }
+        ],
+        'IASTBengali': [
+          { label: 'inherent /a/ as /ô/', value: 'inherentAO' }
+        ],
+        'ISOBengali': [
+          { label: 'inherent /a/ as /ô/', value: 'inherentAO' }
+        ],
+        'IASTOriya': [
+          { label: 'inherent /a/ as /ô/', value: 'inherentAO' }
+        ],
+        'ISOOriya': [
+          { label: 'inherent /a/ as /ô/', value: 'inherentAO' }
+        ],
+        'LatnSyrj': [
+          { label: 'Syriac convention <small><br/> v ġ ḫ f → ḇ ḡ ḵ p̄', value: 'syriacRoman' }
+        ],
+        'LatnSyrn': [
+          { label: 'Syriac convention <small><br/> v ġ ḫ f → ḇ ḡ ḵ p̄', value: 'syriacRoman' }
         ]
       },
       postOptionsRadioGroup: {
@@ -206,12 +395,50 @@
         'Thai': [['ThaiTranscription', 'ThaiSajjhayaOrthography', 'ThaiSajjhayawithA', 'ThaiNativeConsonants']],
         'LaoPali': [['LaoTranscription', 'LaoSajjhaya', 'LaoSajjhayawithA', 'LaoPhonetic']]
       },
+      postOptionsSemitic: {
+        'Arab': [
+          { label: 'Phonetic Mapping <br/><small>/g j p b/ → /غ ج ب ب/ not /ج ج ف ب/</small>', value: 'arabicRemoveAdditionsPhonetic' }
+        ]
+      },
+      postOptionsIndic: {
+        'Arab': [
+          { label: 'أ/a/ to Alif /ا/<br/><small>ا → أ</small>', value: 'ArabAtoAleph' }
+        ]
+      },
       postOptionsGroup: {
+        'Arab': [
+          { label: 'Remove Harakat <br/><small>غَانْدِي ← غاندي</small>', value: 'removeDiacriticsArabic' },
+          { label: 'Remove Sukun at end of words <br/><small>هِنْدْ ← هِنْد</small>', value: 'removeSukunEnd' }
+        ],
+        'Arab-Fa': [
+          { label: 'Remove vowel diacritics <!--<br/><small>غَانْدِي ← غاندي</small> -->', value: 'removeDiacriticsArabic' },
+          { label: 'Remove Jazm at end of words <br/><small>هِنْدْ ← هِنْد</small>', value: 'removeSukunEnd' },
+          { label: '/p g/ پ گ → /f j/ ف ج', value: 'persianPaGaFaJa' }
+        ],
+        'Syrj': [
+          { label: 'Remove Majlīyānā<br/><small><span class="syrj">ܟ ܓ ܙ</span> → <span class="syrj">ܟ̰ ܓ̰ ܙ̰</span></small>', value: 'removeMajliyana' },
+          { label: 'Remove Rūkkāḵā <br/><small><span class="syrj">ܒ</span> → <span class="syrj">ܒ݁</span></small>', value: 'removeRukkaka' },
+          { label: 'Remove Quššāyā <br/><small><span class="syrj">ܒ</span> → <span class="syrj">ܒ݂</span></small>', value: 'removeQussaya' },
+          { label: 'Remove Vowel Diacritics <br/><small><span class="syrj">ܠ ܠ ܠܝ ܠܘ ܠ ܠ ܠܘ</span> → <span class="syrj">ܠܲ ܠܵ ܠܝܼ ܠܘܼ ܠܸ ܠܹ ܠܘܿ</span></small>', value: 'removeVowelsSyriac' }
+        ],
+        'Syrn': [
+          { label: 'Remove Majlīyānā<br/><small><span class="syrn">ܟ ܓ ܙ</span> → <span class="syrn">ܟ̰ ܓ̰ ܙ̰</span></small>', value: 'removeMajliyana' },
+          { label: 'Remove Rūkkāḵā <br/><small><span class="syrn">ܒ</span> → <span class="syrn">ܒ݁</span></small>', value: 'removeRukkaka' },
+          { label: 'Remove Quššāyā <br/><small><span class="syrn">ܒ</span> → <span class="syrn">ܒ݂</span></small>', value: 'removeQussaya' },
+          { label: 'Remove Vowel Diacritics <br/><small><span class="syrn">ܠ ܠ ܠܝ ܠܘ ܠ ܠ ܠܘ</span> → <span class="syrn">ܠܲ ܠܵ ܠܝܼ ܠܘܼ ܠܸ ܠܹ ܠܘܿ</span></small>', value: 'removeVowelsSyriac' }
+        ],
         'Pallava': [
           { label: 'Sundapura font<br/><span class="sundapura">ꦥꦭ꧀ꦭꦮ ꦒ꧀ꦫꦤ꧀', value: 'sundapura' },
           { label: 'Kawitan font<br/><span class="kawitan">ꦥꦭ꧀ꦭꦮ ꦒ꧀ꦫꦤ꧀ꦡ', value: 'kawitan' }
-
         ],
+        'HebrewSBL': [
+          { label: 'ḏ ṯ ḡ → d t g & d t g → d꞉ t꞉ g꞉', value: 'removetddash' }
+        ],
+        /* 'Syrc': [
+          { label: 'Estrangela<br/><span class="estrangelasyriac"></span>', value: 'estrangelasyriac' },
+          { label: 'Eastern<br/><span class="easternsyriac">', value: 'easternsyriac' },
+          { label: 'Western<br/><span class="westernsyriac">', value: 'westernsyriac' }
+        ], */
         'Hiragana': [
           { label: 'Vertical text', value: 'verticalKana' },
           { label: '/v/ → /b/ <br/<small>ゔぃのお → びの</small>', value: 'vtobJapanese' }
@@ -267,15 +494,28 @@
 
         ],
         'Hebrew': [
-          { label: 'Use Qof<br/>כּ ← ק', value: 'HeberewQoph' },
-          { label: 'Use Kamats Katan for Short /o/<br/>לֹ ← לׇ', value: 'HebewShortO' }
+          { label: 'Remove all Niqquds<br/><small>ב פ כ מ → בּ פּ כּ מֶּ</small>', value: 'removeNikkud' },
+          { label: 'Use Qof<br/><small>כּ ← ק</small>', value: 'HeberewQoph' },
+          { label: 'Use Kamats Katan for Short /o/<br/><small>לֹ ← לׇ</small>', value: 'HebewShortO' }
+        ],
+        'Nandinagari': [
+          { label: 'Use Prishtamatra orthography<br/><small><span class="nandinagari"> 𑦮𑧚 𑦮𑧜 𑦮𑧛 𑦮𑧝 → 𑦮𑧤 𑦮𑧤𑧑 𑦮𑧤𑧚 𑦮𑧤𑧜</span></small>', value: 'NandinagariPrishtamatra' }
+        ],
+        'Latn': [
+          { label: 'Aleph as mater lectionis<br/><small> kʾ → kā</small>', value: 'AlephMaterLectionis' },
+          { label: 'ʾ ʿ → ʼ ʽ', value: 'alephAyinLatnAlternate' },
+          { label: 'ʾ ʿ → ʔ ʕ', value: 'alephAyinLatnAlternate2' }
         ],
         'Oriya': [
-          { label: 'ଵ instead of ୱ<br/><small>ଭୱତି → ଭଵତି</small>', value: 'OriyaVaAlt' },
+          { label: 'ଵ instead of ୱ<br/><small>ଭୱତି → ଭଵତି <br/>(Enable preserve source)</small>', value: 'OriyaVaAlt' },
           { label: 'ୟ everywhere<br/><small>ଯୟାତି ଯଜ୍ଞ → ୟୟାତି ୟଜ୍ଞ</small>', value: 'OriyaYYA' }
         ],
         'Bengali': [
           { label: 'য় everywhere<br/><small>যয়াতি যজ্ঞ → য়য়াতি য়জ্ঞ</small>', value: 'BengaliYYA' },
+          { label: 'ẏa → য & ya → য়  ', value: 'BengaliSwitchYaYYa' },
+          { label: 'Old Bengali /ra/ <br/><small>র → ৰ</small>', value: 'BengaliOldRA' },
+          { label: 'ৰ as /b/ & ব as /v/ <br/>', value: 'BengaliRaBa' },
+          { label: 'দৃঢ আষাঢ → দৃঢ় আষাঢ়', value: 'BengaliIntervocalicDDA' },
           { label: 'ৎব → ত্ৱ', value: 'khandatabatova' }
         ],
         'Assamese': [
@@ -308,6 +548,7 @@
           { label: 'Prishthamatra orthography<br/><small>के कै को कौ → कॎ कॎे कॎा कॎो</small>', value: 'DevanagariPrishtamatra' }
         ],
         'Dogra': [
+          { label: 'Use Old Dogra forms<br/><small><span class="dogra">𑠂 𑠄 𑠈 𑠘 𑠧</span> → <span class="olddogra">𑠂 𑠄 𑠈 𑠘 𑠧</span> </small>', value: 'olddogra' },
           { label: '<span class="dogra">𑠨</span> → <span class="dogra">𑠋</span>', value: 'DograShaKha' }
         ],
         'Takri': [
@@ -432,6 +673,9 @@
           { label: 'Use tilde for nasalization<br/><small>kāṃ gām̐ → kā̃ gā̃</smal', value: 'NasalTilde' },
           { label: 'ē/ō → e/o', value: 'noLongEO' }
         ],
+        'Itrans': [
+          { label: 'Readable Itrans<br/><small>gR^ihalakShmI → gRRihalaxmii</small>', value: 'readableItrans' }
+        ],
         'RomanReadable': [
           { label: 'Alternate long/short e/o <br/><small>e\' e o\' o → e ae o oa</small>', value: 'RomanReadableLongEO' },
           { label: 'Capitalize sentences', value: 'capitalizeSentence' }
@@ -469,6 +713,18 @@
           { label: 'Contextual ya/ra/la/va & Repha<br/><small><span class="zanabazarsquare">𑨋𑩇𑨪 𑨋𑩇𑨫 𑨋𑩇𑨬 𑨋𑩇𑨭 𑨫𑩇𑨋 → 𑨋𑨻 𑨋𑨼 𑨋𑨽 𑨋𑨾 𑨺𑨋</span></small>', value: 'ZanabazarSquareContextual' },
           { label: 'Alternate ai/au<br/><small><span class="zanabazarsquare">𑨀𑨄𑨊 𑨀𑨆𑨊 → 𑨀𑨇 𑨀𑨈</span></small>', value: 'ZanabazarSquareAiAu' },
           { label: 'Mongolian final-mark<br/><small><span class="zanabazarsquare">𑨀𑨋𑨴 → 𑨀𑨋𑨳</span></small>', value: 'ZanabazarSquareMongolianFinal' }
+        ],
+        'Sogd': [
+          { label: 'Use <span class="sogd">𐽀</span> <i>(Resh-Ayin)</i> for Ayin', value: 'SogdReshAyin' }
+        ],
+        'Sogo': [
+          { label: 'Use <span class="sogo">𐼘</span> <i>(Resh-Ayin-Dalesh)</i> for Ayin', value: 'SogoReshAyinDaleth' }
+        ],
+        'Hebr-Ar': [
+          { label: '<span class="">עׄ</span> ← <span class="">ג</span>', value: 'gainGimel' },
+          { label: '<span class="">ת</span> ← <span class="">ת̈</span>', value: 'tavTwodot' },
+          { label: '<span class="">תׄ</span> ← <span class="">ת֒</span>', value: 'tavThreedot' },
+          { label: '<span class="">ק</span> ← <span class="">ק̈</span>', value: 'qafTwodot' }
         ]
       },
       autodetect: [
@@ -676,7 +932,7 @@
           },
           language: ['Sanskrit & Pali', 'Sanskrit', 'Pali'],
           status: ['Extinct', 'Extinct: Ancient'],
-          invented: ['Derived: Brahmi'],
+          invented: ['Derived: Aramaic'],
           region: ['Pan-Indic', 'Indic']
         },
         {
@@ -801,7 +1057,7 @@
           wikicode: 'Dogri_script',
           font: {
             'name': 'Noto Serif Dogra',
-            'url': 'https://github.com/googlefonts/noto-fonts/tree/master/phaseIII_only/unhinted/otf/NotoSerifDogra'
+            'url': 'https://github.com/googlefonts/noto-fonts/tree/master/unhinted/otf/NotoSerifDogra'
           },
           language: ['Sanskrit & Pali', 'Sanskrit', 'Pali'],
           status: ['Extinct', 'Extinct: Pre-Modern'],
@@ -817,7 +1073,7 @@
           wikicode: 'Gunjala_Gondi_Lipi',
           font: {
             'name': 'Noto Sans Gunjala Gondi',
-            'url': 'https://github.com/googlefonts/noto-fonts/tree/master/phaseIII_only/unhinted/otf/NotoSansGunjalaGondi'
+            'url': 'https://github.com/googlefonts/noto-fonts/tree/master/unhinted/otf/NotoSansGunjalaGondi'
           },
           language: ['Others'],
           status: ['Living', 'Living: Minor'],
@@ -833,7 +1089,7 @@
           wikicode: 'Gondi_writing',
           font: {
             'name': 'Noto Sans Masaram Gondi',
-            'url': 'https://github.com/googlefonts/noto-fonts/tree/master/phaseIII_only/unhinted/otf/NotoSansMasaramGondi'
+            'url': 'https://github.com/googlefonts/noto-fonts/tree/master/unhinted/otf/NotoSansMasaramGondi'
           },
           language: ['Sanskrit & Pali', 'Sanskrit', 'Pali', 'Others'],
           status: ['Living', 'Living: Minor'],
@@ -933,7 +1189,7 @@
             'name': '',
             'url': ''
           },
-          language: ['Other'],
+          language: ['Others'],
           status: ['Living', 'Living: Major'],
           invented: ['Derived: Han'],
           region: ['East Asian']
@@ -949,7 +1205,7 @@
             'name': '',
             'url': ''
           },
-          language: ['Other'],
+          language: ['Others'],
           status: ['Living', 'Living: Major'],
           invented: ['Derived: Han'],
           region: ['East Asian']
@@ -1183,6 +1439,22 @@
           region: ['North Indic', 'Indic']
         },
         {
+          label: 'Makasar',
+          value: 'Makasar',
+          sscode: 'Maka',
+          ssdesc: 'Makasar (also called Old Makassarese) is a left-to-right, ultimately Brahmi-derived abugida that was used to represent the Makassarese language spoken in South Sulawesi through the 17th century. It is often described as the "bird script", potentially based on local legends that depict birds as the carriers of communication or based on graphical resemblances of some of the characters to various bird postures.',
+          omnicode: '',
+          wikicode: 'Makasar_script',
+          font: {
+            'name': 'Salapa Jangang',
+            'url': 'https://aksaradinusantara.com/fonta/font/Salapa%20Jangang?key=aa166f01886b8b5271fd984ac79a2f5a'
+          },
+          language: ['Others'],
+          status: ['Living', 'Living: Minor'],
+          invented: ['Derived: Brahmi', 'Derived: Pallava'],
+          region: ['South East Asian: Insular', 'South East Asian']
+        },
+        {
           label: 'Malayalam',
           value: 'Malayalam',
           sscode: 'Mlym',
@@ -1223,7 +1495,7 @@
           wikicode: 'Zhang-Zhung_language#Scripts',
           font: {
             'name': 'Noto Sans Marchen',
-            'url': 'https://github.com/googlefonts/noto-fonts/tree/master/phaseIII_only/unhinted/otf/NotoSansMarchen'
+            'url': 'https://github.com/googlefonts/noto-fonts/tree/master/unhinted/otf/NotoSansMarchen'
           },
           language: ['Others'],
           status: ['Extinct', 'Extinct: Medieval'],
@@ -1307,7 +1579,7 @@
           wikicode: 'Mru_language#Script',
           font: {
             'name': 'Noto Sans Mro',
-            'url': 'https://github.com/googlefonts/noto-fonts/tree/master/phaseIII_only/unhinted/otf/NotoSansMro'
+            'url': 'https://github.com/googlefonts/noto-fonts/tree/master/unhinted/otf/NotoSansMro'
           },
           language: ['Others'],
           status: ['Living', 'Living: Minor'],
@@ -1329,6 +1601,22 @@
           status: ['Extinct', 'Extinct: Pre-Modern'],
           invented: ['Derived: Brahmi'],
           region: ['West Indic', 'Indic']
+        },
+        {
+          label: 'Nandinagari',
+          value: 'Nandinagari',
+          sscode: 'Nand',
+          ssdesc: 'The Nandinagari script was used in South India between the 8th and 19th centuries for writing manuscripts and inscriptions relating to philosophy, science and the arts in the Sanskrit language. The script is an abugida, closely related to the  Devanagari script. The character repertoires of both scripts are identical, and the shapes of many characters are similar. However, the script is distinctive in its lack of a connecting headline and in the shapes of most conjuncts and some individual characters',
+          omnicode: 'nandinagari',
+          wikicode: 'Nandinagari',
+          font: {
+            'name': 'Nandinagari Uni',
+            'url': 'https://www.mediafire.com/file/33dz5wnx2uig28o/nandinagariuni.zip/file'
+          },
+          language: ['Sanskrit & Pali', 'Sanskrit', 'Pali'],
+          status: ['Extinct', 'Extinct: Pre-Modern'],
+          invented: ['Derived: Brahmi'],
+          region: ['South Indic', 'Indic']
         },
         {
           label: 'Newa (Nepal Bhasa)',
@@ -1681,8 +1969,8 @@
           omnicode: 'tagalog',
           wikicode: 'Baybayin',
           font: {
-            'name': 'Noto Sans Tagalog',
-            'url': 'Noto Sans Tagalog'
+            'name': 'Open Baybayin',
+            'url': 'https://github.com/ctrlcctrlv/OpenBaybayin/'
           },
           language: ['Others'],
           status: ['Living', 'Living: Minor'],
@@ -1974,7 +2262,7 @@
           wikicode: 'Wancho_script',
           font: {
             'name': 'Noto Sans Wancho',
-            'url': 'https://github.com/googlefonts/noto-fonts/tree/master/phaseIII_only/unhinted/otf/NotoSansWancho'
+            'url': 'https://github.com/googlefonts/noto-fonts/tree/master/unhinted/otf/NotoSansWancho'
           },
           language: ['Others'],
           status: ['Living', 'Living: Minor'],
@@ -2014,6 +2302,492 @@
           region: ['Central Asian']
         }
       ],
+      scriptsSemitic: [
+        {
+          label: 'Thaana (Dhivehi)',
+          value: 'Thaa',
+          sscode: 'Thaa',
+          ssdesc: 'The Thaana script is used for writing the Maldivian language, also known as Dhivehi, spoken by about 370,000 people in the Maldives and in Maldivian communities in India. It is one of the few alphabets in the world which does not have its roots in the Proto-Canaanite script. Rather, the first nine letters are derived from the shapes of the numerals used in Arabic writing, and the next nine from earlier forms of Maldivian letters.',
+          omnicode: 'thaana',
+          wikicode: 'Thaana',
+          font: {
+            'name': '',
+            'url': ''
+          },
+          language: ['Others'],
+          status: ['Living', 'Living: Major'],
+          invented: ['Derived: Perso-Arabic'],
+          region: ['South Asian: Other']
+        },
+        {
+          label: 'Hebrew',
+          value: 'Hebr',
+          sscode: 'Hebr',
+          ssdesc: 'The Hebrew script is primarily used for writing the Hebrew, Samaritan and Yiddish languages. It is also used for writing some varieties of Arabic spoken in North Africa, Iraq and Yemen; the languages of the Jewish communities in Italy and Corfu, Morocco (Berber), Spain and the Caucasus mountains; and the modern Jewish Aramaic languages. Prior to 500 BC the Hebrew language was written in the Paleo-Hebrew script, which was abandoned after the Jewish exile in the 5th century BC in favour of the Aramaic script, from which the current Hebrew script descended. It is commonly called the Hebrew alphabet, after its first two letters aleph and bet, although it is actually an abjad.',
+          omnicode: 'hebrew',
+          wikicode: 'Hebrew_alphabet',
+          font: {
+            'name': 'Noto Serif Hebrew',
+            'url': 'https://github.com/googlefonts/noto-fonts/blob/main/hinted/ttf/NotoSerifHebrew/NotoSerifHebrew-Regular.ttf'
+          },
+          language: ['Others'],
+          status: ['Living', 'Living: Major'],
+          invented: ['Derived: Aramaic'],
+          region: ['West Asian']
+        },
+        {
+          label: 'Shahmukhi',
+          value: 'Arab-Pa',
+          sscode: '',
+          ssdesc: '',
+          wikicode: 'Shahmukhi_alphabet',
+          wikidesc: 'Shahmukhi (lit.\'from the mouth of the Shah\') is a modified Perso-Arabic alphabet used by Punjabi Muslims (primarily in Punjab, Pakistan) to write the Punjabi language.It is generally written in the Nastaʿlīq calligraphic hand, which is also used for Urdu. Perso-Arabic is one of two scripts used for Punjabi, the other being Gurmukhi, used by Sikhs and Hindus in Punjab, India. It is also used as the main alphabet to write Pahari–Pothwari in Azad Kashmir and Jammu and Kashmir',
+          omnicode: 'punjabi',
+          font: {
+            'name': 'Noto Sans Nastaliq Urdu',
+            'url': 'https://github.com/googlefonts/noto-fonts/blob/main/unhinted/otf/NotoNastaliqUrdu/NotoNastaliqUrdu-Regular.otf'
+          },
+          language: ['Sanskrit & Pali', 'Sanskrit', 'Pali'],
+          status: ['Living', 'Living: Major'],
+          invented: ['Derived: Perso-Arabic'],
+          region: ['North Indic', 'Indic']
+        },
+        {
+          label: 'Urdu',
+          value: 'Arab-Ur',
+          sscode: '',
+          ssdesc: '',
+          wikicode: 'Urdu_alphabet',
+          wikidesc: 'The Urdu alphabet is the right-to-left alphabet used for the Urdu language. It is a modification of the Persian alphabet known as Perso-Arabic, which is itself a derivative of the Arabic alphabet. The Urdu alphabet has up to 58 letters. With 39 basic letters and no distinct letter cases, the Urdu alphabet is typically written in the calligraphic Nastaʿlīq script, whereas Arabic is more commonly in the Naskh style.',
+          omnicode: 'urdu',
+          font: {
+            'name': 'Noto Sans Nastaliq Urdu',
+            'url': 'https://github.com/googlefonts/noto-fonts/blob/main/unhinted/otf/NotoNastaliqUrdu/NotoNastaliqUrdu-Regular.otf'
+          },
+          language: ['Sanskrit & Pali', 'Sanskrit', 'Pali'],
+          status: ['Living', 'Living: Major'],
+          invented: ['Derived: Perso-Arabic'],
+          region: ['North Indic', 'Indic']
+        },
+        {
+          label: 'Hebrew (Judeo-Arabic)',
+          value: 'Hebr-Ar',
+          miscsrc: '(From Omniglot)',
+          miscdesc: 'The Judeo-Arabic script is a version of the Hebrew script used to write the Judeo-Arabic language - a version of Arabic with influences from Hebrew and Aramaic.',
+          omnicode: 'judeo-arabic',
+          wikicode: 'Judeo-Arabic_dialects',
+          font: {
+            'name': '',
+            'url': ''
+          },
+          language: ['Others'],
+          status: ['Living', 'Living: Minor'],
+          invented: ['Derived: Aramaic'],
+          region: ['West Asian']
+        },
+        {
+          label: 'Ugaritic',
+          value: 'Ugar',
+          sscode: 'Ugar',
+          ssdesc: 'The Ugaritic script was used from about 1500-1300 BC to write the Ugaritic language, spoken in modern-day Syria. It was also occasionally used for writing documents in the Hurrian language. Visually, the script resembled Cuneiform, with each letter written as one of a combination of short, linear wedges. However, the forms of the letters appear to have been freely invented; derivational relationships with other cuneiform letters have not been established. The script remained relatively stable in form throughout its use, with no significant changes.',
+          wikicode: 'Ugaritic_alphabet',
+          omnicode: 'ugaritic',
+          font: {
+            'name': 'Noto Sans Ugaritic',
+            'url': 'https://cdn.jsdelivr.net/gh/virtualvinodh/aksharamukha/aksharamukha-front/src/statics/NotoSansUgaritic-Regular.otf'
+          },
+          language: ['Others'],
+          status: ['Extinct', 'Extict: Ancient'],
+          invented: ['Derived: Cuneiform'],
+          region: ['West Asian']
+        },
+        {
+          label: 'Syriac (Estrangela)',
+          value: 'Syre',
+          sscode: 'Syrc',
+          ssdesc: 'The Syriac script is attested as early as the year 6 AD. It was primarily used for writing the Syriac language, now extinct outside of the Syrian church. The Assyrian Neo-Aramaic, Chaldean Neo-Aramaic and Turoyo/Surayt languages are descended from Syriac, and are still written in the Syriac script. It can also be used for writing Arabic, known as Garshani writing. There are three ancient variations of the script: the classical liturgical script called Estrangelo, the Western variant, and the Eastern variant.',
+          wikicode: 'Syriac_alphabet',
+          omnicode: 'syriac',
+          font: {
+            'name': 'Noto Sans Syriac',
+            'url': 'https://cdn.jsdelivr.net/gh/virtualvinodh/aksharamukha/aksharamukha-front/src/statics//NotoSansSyriac-Regular.otf'
+          },
+          language: ['Others'],
+          status: ['Living', 'Living: Minor'],
+          invented: ['Derived: Aramaic'],
+          region: ['West Asian']
+        },
+        {
+          label: 'Syriac (Western)',
+          value: 'Syrj',
+          sscode: 'Syrc',
+          ssdesc: 'The Syriac script is attested as early as the year 6 AD. It was primarily used for writing the Syriac language, now extinct outside of the Syrian church. The Assyrian Neo-Aramaic, Chaldean Neo-Aramaic and Turoyo/Surayt languages are descended from Syriac, and are still written in the Syriac script. It can also be used for writing Arabic, known as Garshani writing. There are three ancient variations of the script: the classical liturgical script called Estrangelo, the Western variant, and the Eastern variant.',
+          wikicode: 'Syriac_alphabet',
+          omnicode: 'syriac',
+          font: {
+            'name': 'Noto Sans Syriac',
+            'url': 'https://cdn.jsdelivr.net/gh/virtualvinodh/aksharamukha/aksharamukha-front/src/statics//NotoSansSyriac-Regular.otf'
+          },
+          language: ['Others'],
+          status: ['Living', 'Living: Minor'],
+          invented: ['Derived: Aramaic'],
+          region: ['West Asian']
+        },
+        {
+          label: 'Syriac (Eastern)',
+          value: 'Syrn',
+          sscode: 'Syrc',
+          ssdesc: 'The Syriac script is attested as early as the year 6 AD. It was primarily used for writing the Syriac language, now extinct outside of the Syrian church. The Assyrian Neo-Aramaic, Chaldean Neo-Aramaic and Turoyo/Surayt languages are descended from Syriac, and are still written in the Syriac script. It can also be used for writing Arabic, known as Garshani writing. There are three ancient variations of the script: the classical liturgical script called Estrangelo, the Western variant, and the Eastern variant.',
+          wikicode: 'Syriac_alphabet',
+          omnicode: 'syriac',
+          font: {
+            'name': 'Noto Sans Syriac',
+            'url': 'https://cdn.jsdelivr.net/gh/virtualvinodh/aksharamukha/aksharamukha-front/src/statics//NotoSansSyriac-Regular.otf'
+          },
+          language: ['Others'],
+          status: ['Living', 'Living: Minor'],
+          invented: ['Derived: Aramaic'],
+          region: ['West Asian']
+        },
+        {
+          label: 'Old Sogdian',
+          value: 'Sogo',
+          sscode: 'Sogo',
+          ssdesc: 'The Old Sogdian script encompasses a group of related scripts used to represent Sogdian, an ancient Eastern Iranian language. Old Sogdian unifies the scripts used in short inscriptions on coins and vessels, the Ancient Letters and the Kultobe and Upper Indus inscriptions.',
+          wikicode: '',
+          omnicode: '',
+          font: {
+            'name': 'Noto Sans OldSogdian',
+            'url': 'https://cdn.jsdelivr.net/gh/virtualvinodh/aksharamukha/aksharamukha-front/src/statics//NotoSansOldSogdian-Regular.otf'
+          },
+          language: ['Others'],
+          status: ['Extinct', 'Extinct: Ancient'],
+          invented: ['Derived: Aramaic'],
+          region: ['West Asian']
+        },
+        {
+          label: 'Sogdian',
+          value: 'Sogd',
+          sscode: 'Sogd',
+          ssdesc: 'The Sogdian script was one of three scripts used for writing the Sogdian language, a middle Iranian language spoken in Sogdiana, a region in the Achaemenid Persian empire comprising parts of modern-day Uzbekistan, Tajikistan, Pakistan and China. This language was also written in the Manichaean and Syriac scripts. Sogdian writing derives from the Aramaic script and was used from approximately the 1st to the 13th centuries AD, during which time three main varieties emerged, the Ancient Letters, the Sutra style and the Uyghur style.',
+          wikicode: 'Sogdian_alphabet',
+          omnicode: 'sogdian',
+          font: {
+            'name': 'Noto Sans Sogdian',
+            'url': 'https://cdn.jsdelivr.net/gh/virtualvinodh/aksharamukha/aksharamukha-front/src/statics//NotoSansSogdian-Regular.otf'
+          },
+          language: ['Others'],
+          status: ['Extinct', 'Extinct: Ancient'],
+          invented: ['Derived: Aramaic'],
+          region: ['West Asian']
+        },
+        {
+          label: 'Old South Arabian',
+          value: 'Sarb',
+          sscode: 'Sarb',
+          ssdesc: 'The Old South Arabian script (also called Musnad, Epigraphic South Arabian, or Sayhadic) was used for writing a group of closely related Semitic languages, all of which are now extinct. The script was used throughout the Arabian peninsula, particularly in modern-day Yemen, between the 6th and the 8th centuries AD, after which it was replaced by Arabic writing. It is the forerunner of the modern-day Ethiopic script.',
+          wikicode: 'Ancient_South_Arabian_script',
+          omnicode: 'southarabian',
+          font: {
+            'name': 'Noto Sans OldSouthArabian',
+            'url': 'https://cdn.jsdelivr.net/gh/virtualvinodh/aksharamukha/aksharamukha-front/src/statics/NotoSansOldSouthArabian-Regular.otf'
+          },
+          language: ['Others'],
+          status: ['Extinct', 'Extinct: Ancient'],
+          invented: ['Derived: Proto-Sinaitic'],
+          region: ['West Asian']
+        },
+        {
+          label: 'Samaritan',
+          value: 'Samr',
+          sscode: 'Samr',
+          ssdesc: 'The Samaritan script is of Phoenician descent, via the Paleo-Hebrew script. Samaritan writing began to noticeably diverge from Paleo-Hebrew writing around the 3rd century and has been used since that time for the Samaritan dialects of Hebrew, Aramaic and Arabic. These languages are no longer in everyday spoken use but are still used for writing liturgical and scholarly works. Samaritan is also the script for the bi-weekly newspaper A.B., published in Israel.',
+          wikicode: 'Samaritan_script',
+          omnicode: 'samaritan',
+          font: {
+            'name': 'Noto Sans Samaritan',
+            'url': 'https://cdn.jsdelivr.net/gh/virtualvinodh/aksharamukha/aksharamukha-front/src/statics/NotoSansSamaritan-Regular.otf'
+          },
+          language: ['Others'],
+          status: ['Extinct', 'Extinct: Ancient'],
+          invented: ['Derived: Phoenician'],
+          region: ['West Asian']
+        },
+        {
+          label: 'Inscriptional Parthian',
+          value: 'Prti',
+          sscode: 'Prti',
+          ssdesc: 'Inscriptional Parthian is one of three related ancient scripts, along with Inscriptional Pahlavi and Psalter Pahlavi, used for writing a number of Iranian and Indo-European languages. All three scripts developed from the Imperial Aramaic script.',
+          wikicode: 'Inscriptional_Parthian',
+          omnicode: 'parthian',
+          font: {
+            'name': 'Noto Sans',
+            'url': 'https://cdn.jsdelivr.net/gh/virtualvinodh/aksharamukha/aksharamukha-front/src/statics/-Regular.otf'
+          },
+          language: ['Others'],
+          status: ['Extinct', 'Extinct: Ancient'],
+          invented: ['Derived: Aramaic'],
+          region: ['West Asian']
+        },
+        {
+          label: 'Phoenician',
+          value: 'Phnx',
+          sscode: 'Phnx',
+          ssdesc: 'The Phoenician script was the first widespread script whose symbols exclusively represented sounds rather than concepts. Phoenician writing ultimately derived from Egyptian hieroglyphics; the rebus principle (the use of a pictographic symbol for its phonetic value independent of its original meaning) is generally believed to have been the means for evolution from pictographic to phonetic writing. The Phoenician script was originally used for writing the Phoenician language, but due to the Phoenicians\' lucrative trading relationships with most of the Mediterranean states, it became known throughout the Mediterranean and North Africa. It is believed to be the precursor of such diverse scripts as Greek, Aramaic and Brahmi, and by extension of most of the writing systems used for representing Indo-Aryan languages.',
+          wikicode: 'Phoenician_alphabet',
+          omnicode: 'phoenician',
+          font: {
+            'name': 'Noto Sans Phoenician',
+            'url': 'https://cdn.jsdelivr.net/gh/virtualvinodh/aksharamukha/aksharamukha-front/src/statics/NotoSansPhoenician-Regular.otf'
+          },
+          language: ['Others'],
+          status: ['Extinct', 'Extinct: Ancient'],
+          invented: ['Derived: Proto-Sinaitic'],
+          region: ['Mediterranean']
+        },
+        {
+          label: 'Psalter Pahlavi',
+          value: 'Phlp',
+          sscode: 'Phlp',
+          ssdesc: 'Psalter Pahlavi was one of three forms of the ancient Pahlavi script, used for writing the Middle Iranian languages. Psalter Pahlavi has so far only been attested in two sources, a 7th century manuscript of the Psalms of David (hence its name) and an inscription on a bronze cross found at Herat (in present-day Afghanistan). The lack of surviving material in this form of the script has left a number of gaps in modern-day scholars\' understanding of Psalter Pahlavi writing.',
+          wikicode: 'Psalter_Pahlavi',
+          omnicode: 'psalter',
+          font: {
+            'name': 'Noto Sans PsalterPahlavi',
+            'url': 'https://cdn.jsdelivr.net/gh/virtualvinodh/aksharamukha/aksharamukha-front/src/statics/NotoSansPsalterPahlavi-Regular.otf'
+          },
+          language: ['Others'],
+          status: ['Extinct', 'Extinct: Ancient'],
+          invented: ['Derived: Aramaic'],
+          region: ['West Asian']
+        },
+        {
+          label: 'Inscriptional Pahlavi',
+          value: 'Phli',
+          sscode: 'Phli',
+          ssdesc: 'Inscriptional Pahlavi is the earliest of the three forms of the Pahlavi script, used regularly as a monumental script from the 2nd century BC until the 5th century AD. Later forms of the script were called Psalter Pahlavi and Book Pahlavi. Psalter Pahlavi is so far attested in only two sources, so the bulk of our knowledge is related to the other two forms. The names of these, Inscriptional and Book Pahlavi are somewhat misleading; the Inscriptional form was used on monuments, coins, seals and amulets, as would be expected, but the Book form was used in manuscript texts as well as on stone monuments. The distinction then refers to whether the letters were connected (Book Pahlavi) or unconnected (Inscriptional Pahlavi) rather than to distinct uses of either form.',
+          wikicode: 'Inscriptional_Pahlavi',
+          omnicode: 'mpersian',
+          font: {
+            'name': 'Noto Sans InscriptionalPahlavi',
+            'url': 'https://cdn.jsdelivr.net/gh/virtualvinodh/aksharamukha/aksharamukha-front/src/statics/NotoSansInscriptionalPahlavi-Regular.otf'
+          },
+          language: ['Others'],
+          status: ['Extinct', 'Extinct: Ancient'],
+          invented: ['Derived: Aramaic'],
+          region: ['West Asian']
+        },
+        {
+          label: 'Palmyrene',
+          value: 'Palm',
+          sscode: 'Palm',
+          ssdesc: 'The Palmyrene script was derived from cursive versions of Aramaic writing around the 1st century BC. It was initially used in the area between the city of Damascus and the Euphrates river, for writing the Palmyrene (also called Palmyrenean) dialect of West Aramaic. The latest extant documents written in the script are from the year 273 AD, the year that the Palmyrene empire was sacked by the Roman Emperor Aurelian.',
+          wikicode: 'Palmyrene_alphabet',
+          omnicode: '',
+          font: {
+            'name': 'Noto Sans Palmyrene',
+            'url': 'https://github.com/googlefonts/noto-fonts/blob/main/hinted/ttf/NotoSansPalmyrene-Regular.otf'
+          },
+          language: ['Others'],
+          status: ['Extinct', 'Extinct: Ancient'],
+          invented: ['Derived: Aramaic'],
+          region: ['West Asian']
+        },
+        {
+          label: 'Nabataean',
+          value: 'Nbat',
+          sscode: 'Nbat',
+          ssdesc: 'The Nabataean script was used from the 2nd century BC until the 4th or 5th century AD for writing the Nabataean language, a Northwest Semitic language closely related to Arabic. The script was developed from Aramaic writing, and was the immediate precursor of Arabic writing.',
+          wikicode: 'Nabataean_Aramaic',
+          omnicode: 'nabataean',
+          font: {
+            'name': 'Noto Sans Nabataean',
+            'url': 'https://github.com/googlefonts/noto-fonts/blob/main/hinted/ttf/Nabataean-Regular.otf'
+          },
+          language: ['Others'],
+          status: ['Extinct', 'Extinct: Ancient'],
+          invented: ['Derived: Aramaic'],
+          region: ['West Asian']
+        },
+        {
+          label: 'Old North Arabian',
+          value: 'Narb',
+          sscode: 'Narb',
+          ssdesc: 'Old North Arabian (also called Ancient North Arabian) is a collective term for a group of scripts found in rock inscriptions written in pre-Islamic dialects in the western two-thirds of the Arabian peninsula. The inscriptions have been dated to between the 8th century BC and the 4th century AD. Many are formal inscriptions, but most are graffiti, written in an informal style.',
+          wikicode: 'Ancient_North_Arabian',
+          omnicode: '',
+          font: {
+            'name': 'Noto Sans OldNorthAriabian',
+            'url': 'https://github.com/googlefonts/noto-fonts/blob/main/hinted/ttf/OldNorthAriabian-Regular.otf'
+          },
+          language: ['Others'],
+          status: ['Extinct', 'Extinct: Ancient'],
+          invented: ['Derived: Proto-Sinaitic'],
+          region: ['West Asian']
+        },
+        {
+          label: 'Manichaean',
+          value: 'Mani',
+          sscode: 'Mani',
+          ssdesc: 'The Manichaean script was derived from the Estrangelo variant of the Syriac script. It was the vehicle employed for the spread of Manichaeanism, an Iranian Gnostic religion created by the Mesopotamian prophet Mani, between the 3rd and 14th centuries. It was Mani\'s desire that his teachings could be made available to speakers of every known language, so the script was used for writing the Middle and Early Modern Persian, Parthian, Sogdian, Bactrian, Ughur and Tocharian languages. ',
+          wikicode: 'Manichaean_script',
+          omnicode: 'manichaean',
+          font: {
+            'name': 'Noto Sans Manichaean',
+            'url': 'https://github.com/googlefonts/noto-fonts/blob/main/hinted/ttf/NotoSansManichean-Regular.otf'
+          },
+          language: ['Others'],
+          status: ['Extinct', 'Extinct: Ancient'],
+          invented: ['Derived: Aramaic'],
+          region: ['West Asian']
+        },
+        {
+          label: 'Hatran',
+          value: 'Hatr',
+          sscode: 'Hatr',
+          ssdesc: 'Hatran writing was discovered in 1912 in present-day al-Hadr, an ancient city in the al-Jazira region of Iraq which used to be called Hatra. Over 100 stone inscriptions were uncovered by archaeologists working for Iraqi Department of Antiquities; since then approximately 500 more texts have been discovered. Most of these were short, and as a result it has been difficult to deduce a great deal about the Aramaic dialect, called Aramaic of Hatra, which the script represented.',
+          wikicode: 'Hatran_Aramaic',
+          omnicode: '',
+          font: {
+            'name': 'Noto Sans Hatran',
+            'url': 'https://github.com/googlefonts/noto-fonts/blob/main/hinted/ttf/NotoSansHatran-Regular.otf'
+          },
+          language: ['Others'],
+          status: ['Extinct', 'Extinct: Ancient'],
+          invented: ['Derived: Aramaic'],
+          region: ['West Asian']
+        }, /*
+        {
+          label: 'Greek (Semitic)',
+          value: 'Grek',
+          sscode: 'Grek',
+          ssdesc: '',
+          wikicode: '',
+          omnicode: '',
+          font: {
+            'name': 'Noto Sans',
+            'url': 'https://cdn.jsdelivr.net/gh/virtualvinodh/aksharamukha/aksharamukha-front/src/statics/-Regular.otf'
+          },
+          language: ['Others'],
+          status: ['Extinct', 'Extinct: Ancient'],
+          invented: ['Derived: Aramaic'],
+          region: ['Mediterranean']
+        }, */
+        {
+          label: 'Elymaic',
+          value: 'Elym',
+          sscode: 'Elym',
+          ssdesc: 'The Elymaic script was an abjad used between approximately 250 BC - 500 AD in the state of Elymais, an ancient state located in the region southeast of the Tigris River in present-day Iran. The Elymaic script was descended from Aramaic, and was either the parent or a sibling script for Mandaic. It is poorly attested on coins and rock inscriptions from the second and third centuries.',
+          wikicode: 'Elymaic',
+          omnicode: '',
+          font: {
+            'name': 'Noto Sans Elymaic',
+            'url': 'https://github.com/googlefonts/noto-fonts/blob/main/hinted/ttf/NotoSansElymaic-Regular.otf'
+          },
+          language: ['Others'],
+          status: ['Extinct', 'Extinct: Ancient'],
+          invented: ['Derived: Aramaic'],
+          region: ['West Asian']
+        },
+        /* {
+          label: 'Egyptian hieroglyphs (Semitic)',
+          value: 'Egyp',
+          sscode: 'Egyp',
+          ssdesc: '',
+          wikicode: '',
+          omnicode: '',
+          font: {
+            'name': 'Noto Sans',
+            'url': 'https://cdn.jsdelivr.net/gh/virtualvinodh/aksharamukha/aksharamukha-front/src/statics/-Regular.otf'
+          },
+          language: ['Others'],
+          status: ['Extinct', 'Extinct: Ancient'],
+          invented: ['Derived: Pictograms'],
+          region: ['North African']
+        }, */
+        {
+          label: 'Imperial Aramaic',
+          value: 'Armi',
+          sscode: 'Armi',
+          ssdesc: 'The Aramaic script was used for writing the Aramaic language, which was the trade language of the Middle East from about 1000 BC to about 1000 AD. Aramaic writing is derived from the Phoenician script. Because the evolution from one to the other was a continuous process over about 2000 years it is difficult to divide it neatly into \'uniquely Phoenician\' and \'uniquely Aramaic\' blocks; however, it is generally agreed that a divergence into two distinct scripts was evident by about the 8th century BC. Both the Phoenician and Aramaic scripts were the antecedents of a large and geographically diverse family of writing systems.',
+          wikicode: 'Imperial_Aramaic',
+          omnicode: '',
+          font: {
+            'name': 'Noto Sans ImperialAramaic',
+            'url': 'https://github.com/googlefonts/noto-fonts/blob/main/hinted/ttf/NotoSansImperialAramaic-Regular.otf'
+          },
+          language: ['Others'],
+          status: ['Extinct', 'Extinct: Ancient'],
+          invented: ['Derived: Phoenician'],
+          region: ['West Asian']
+        },
+        {
+          label: 'Ethiopic (Abjad)',
+          value: 'Ethi',
+          sscode: 'Ethi',
+          ssdesc: 'The Ethiopic (Ge\'ez) script was developed as the writing system of the Ge\'ez language, a Semitic language spoken in Ethiopia and Eritrea until the 10th to the 12th centuries. Although the language ceased to be used in vernacular speech (it now serves a liturgical function only), the script is still widely used for writing the Ethiopian and Eritrean Semitic languages such as Tigré, Amharic and Tigrinya. In some languages, the script is called fidäl (ፊደል), which means \'alphabet\', and individual letters are referred to as fidel.',
+          wikicode: '/Geʽez_script',
+          omnicode: 'ethiopic',
+          font: {
+            'name': '',
+            'url': ''
+          },
+          language: ['Others'],
+          status: ['Living', 'Living: Major'],
+          invented: ['Derived: Proto-Sinaitic'],
+          region: ['North African']
+        },
+        {
+          label: 'Arabic',
+          value: 'Arab',
+          sscode: 'Arab',
+          ssdesc: 'Arabic writing is the second most broadly-used script in the world, after the Latin alphabet. It descended from the Nabataean abjad, itself a descendant of the Phoenician script, and has been used since the 4th century for writing the Arabic language. Since the words of the Prophet Muhammed can only be written in Arabic, the Arabic script has traveled far and wide with the spread of Islam and came to be used for a number of languages throughout Asia, Africa and the Middle East.',
+          wikicode: 'Arabic_script',
+          omnicode: 'arabic',
+          font: {
+            'name': '',
+            'url': ''
+          },
+          language: ['Others'],
+          status: ['Living', 'Living: Major'],
+          invented: ['Derived: Aramaic'],
+          region: ['West Asian']
+        },
+
+        {
+          label: 'Persian',
+          value: 'Arab-Fa',
+          sscode: '',
+          miscsrc: '(From Wikipedia)',
+          miscdesc: 'The Persian alphabet (Persian: الفبای فارسی‎, romanized: Alefbā-ye Fārsi) is a writing system used for the Persian language spoken in Iran (Western Persian) and Afghanistan (Dari Persian) since the 7th century after Muslim conquest of Persia. The Persian script is directly derived and developed from the Arabic script. After the Muslim conquest of Persia and the fall of the Sasanian Empire in the 7th century, Arabic became the language of government and especially religion in Persia for two centuries.',
+          wikicode: 'Persian_alphabet',
+          omnicode: 'persian',
+          font: {
+            'name': '',
+            'url': ''
+          },
+          language: ['Others'],
+          status: ['Living', 'Living: Major'],
+          invented: ['Derived: Aramaic'],
+          region: ['West Asian']
+        }
+        /* {
+          label: '',
+          value: '',
+          sscode: '',
+          ssdesc: '',
+          wikicode: '',
+          omnicode: '',
+          font: {
+            'name': 'Noto Sans',
+            'url': 'https://cdn.jsdelivr.net/gh/virtualvinodh/aksharamukha/aksharamukha-front/src/statics/-Regular.otf'
+          },
+          language: ['', '', ''],
+          status: ['', ''],
+          invented: [''],
+          region: ['']
+        } */
+      ],
       scriptsLatin: [
         {
           label: 'Roman (Harvard-Kyoto)',
@@ -2044,7 +2818,7 @@
           status: ['Living', 'Living: Minor'],
           invented: ['Derived: Latin'],
           region: ['Eurasia'],
-          label: 'Roman (IPA)',
+          label: 'Roman (IPA Indic)',
           value: 'IPA',
           sscode: '',
           ssdesc: '',
@@ -2058,7 +2832,7 @@
           wikidesc: 'The International Phonetic Alphabet (IPA) is an alphabetic system of phonetic notation based primarily on the Latin alphabet. It was devised by the International Phonetic Association in the late 19th century as a standardized representation of the sounds of spoken language. The IPA is used by lexicographers, foreign language students and teachers, linguists, speech-language pathologists, singers, actors, constructed language creators and translators. The IPA is designed to represent only those qualities of speech that are part of oral language: phones, phonemes, intonation and the separation of words and syllables.'
         },
         {
-          label: 'Roman (ISO 15919)',
+          label: 'Roman (ISO 15919 Indic)',
           value: 'ISO'
         },
         {
@@ -2090,6 +2864,38 @@
           value: 'BarahaSouth'
         },
         {
+          label: 'Roman (Semitic)',
+          value: 'Latn'
+        },
+        {
+          label: 'Roman (Semitic Typeable)',
+          value: 'Type'
+        },
+        {
+          label: 'Roman (ISO 259 Hebrew)',
+          value: 'ISO259'
+        },
+        {
+          label: 'Roman (SBL Hebrew)',
+          value: 'HebrewSBL'
+        },
+        {
+          label: 'Roman (ISO 233 Arabic)',
+          value: 'ISO233'
+        },
+        /* {
+          label: 'Roman (DIN Arabic)',
+          value: 'ArabicDIN'
+        }, */
+        {
+          label: 'Roman (DMG Persian)',
+          value: 'PersianDMG'
+        },
+        {
+          label: 'Roman (LoC Burmese)',
+          value: 'IASTLOC'
+        },
+        {
           language: ['Others'],
           status: ['Living', 'Living: Major'],
           invented: ['Derived: Greek'],
@@ -2106,6 +2912,36 @@
             'url': ''
           },
           wikidesc: 'The Russian alphabet uses letters from the Cyrillic script. The modern Russian alphabet consists of 33 letters. The Cyrillic script is a writing system used for various alphabets across Eurasia, particularly in Eastern Europe, the Caucasus, Central Asia, and North Asia. It is based on the Early Cyrillic alphabet developed during the 9th century AD at the Preslav Literary School in the First Bulgarian Empire. It is the basis of alphabets used in various languages, especially those of Orthodox Slavic origin, and non-Slavic languages influenced by Russian.'
+        }
+      ],
+      semiticLatin: [
+        {
+          label: 'Semitic (Aksharamukha)',
+          value: 'Latn'
+        },
+        {
+          label: 'Semitic Typeable (Aksharamukha)',
+          value: 'Type'
+        },
+        {
+          label: 'ISO 259 Hebrew',
+          value: 'ISO259'
+        },
+        {
+          label: 'SBL Hebrew',
+          value: 'HebrewSBL'
+        },
+        {
+          label: 'ISO 233 Arabic',
+          value: 'ISO233'
+        },
+        /* {
+          label: 'Roman (DIN Arabic)',
+          value: 'ArabicDIN'
+        }, */
+        {
+          label: 'DMG Persian',
+          value: 'PersianDMG'
         }
       ],
       scriptsRomanization: [
@@ -2186,13 +3022,17 @@
       tagsLanguageM: ['Sanskrit', 'Pali', 'Others'],
       tagsRegionM1: ['Indic'],
       tagsRegionS1: ['Pan-Indic', 'East Indic', 'West Indic', 'North Indic', 'South Indic'],
-      tagsRegionM2: ['East Asian', 'West Asian', 'Central Asian', 'South Asian: Other', 'South East Asian'],
+      tagsRegionM2: ['East Asian', 'West Asian', 'Central Asian', 'South Asian: Other', 'South East Asian', 'Mediterranean', 'North African'],
       tagsRegionS2: ['South East Asian: Mainland', 'South East Asian: Insular'],
-      tagsDerivationM: ['Derived: Brahmi', 'Derived: Pallava', 'Derived: Aramaic', 'Derived: Perso-Arabic', 'Derived: Cuneiform', 'Invented', 'Derived: Han'],
+      tagsDerivationM: ['Derived: Brahmi', 'Derived: Pallava', 'Derived: Aramaic', 'Derived: Perso-Arabic', 'Derived: Cuneiform', 'Invented', 'Derived: Han', 'Derived: Proto-Sinaitic', 'Derived: Egyptian Hieroglyphics', 'Derived: Phoenician'],
       ocrLangOptions: [
         {
           label: 'Autodetect',
           value: 'osd'
+        },
+        {
+          label: 'Arabic',
+          value: 'ara'
         },
         {
           label: 'Assamese',
@@ -2227,8 +3067,16 @@
           value: 'guj'
         },
         {
+          label: 'Hebrew',
+          value: 'heb'
+        },
+        {
           label: 'Javanese',
           value: 'jav'
+        },
+        {
+          label: 'Japanese',
+          value: 'jpn'
         },
         {
           label: 'Kannada',
@@ -2255,12 +3103,20 @@
           value: 'ori'
         },
         {
+          label: 'Persian',
+          value: 'fas'
+        },
+        {
           label: 'Punjabi',
           value: 'pan'
         },
         {
           label: 'Sinhala',
           value: 'sin'
+        },
+        {
+          label: 'Syriac',
+          value: 'syr'
         },
         {
           label: 'Tamil',
@@ -2279,12 +3135,12 @@
           value: 'bod'
         },
         {
-          label: 'Tibetan',
-          value: 'bod'
-        },
-        {
           label: 'Urdu',
           value: 'urd'
+        },
+        {
+          label: 'Yiddish',
+          value: 'yid'
         }
       ]
     }
@@ -2308,19 +3164,56 @@
     scriptsOutput: function () {
       return this.scripts.filter(function (el) {
         return el.value !== 'GranthaGrantamil'
-      })
+      }).filter(x => !['Hebr', 'Thaa', 'Arab-Ur', 'Arab-Pa'].includes(x.value))
       // return this.scripts.slice(1)
     },
     scriptsInput: function () {
-      return this.autodetect.slice().concat(this.scripts)
+      return this.autodetect.slice().concat(this.scripts).filter(x => !['Hebr', 'Thaa', 'Arab-Ur', 'Arab-Pa'].includes(x.value))
     },
     scripts: function () {
-      var scriptAll = this.scriptsIndic.slice().concat(this.scriptsLatin.slice())
+      var scriptAll = this.scriptsIndic.slice().concat(this.scriptsLatin.slice()).concat(this.scriptsSemitic.slice())
+      // console.log(scriptAll)
+      scriptAll.sort(this.compareObjects)
+      return scriptAll.filter(x => !['Hebr', 'Thaa', 'Arab-Ur', 'Arab-Pa'].includes(x.value))
+    },
+    scriptsAll: function () {
+      var scriptAll = this.scriptsIndic.slice().concat(this.scriptsLatin.slice()).concat(this.scriptsSemitic.slice())
+      // console.log(scriptAll)
       scriptAll.sort(this.compareObjects)
       return scriptAll
     },
+    scriptSemiticSorted: function () {
+      var scriptSemiticSort = this.scriptsSemitic.slice()
+      scriptSemiticSort.sort(this.compareObjects)
+      // console.log(scriptSemiticSort)
+      return scriptSemiticSort
+    },
+    scriptSemiticSortedHebr: function () {
+      var scriptSemiticSort = this.scriptsSemitic.slice()
+      scriptSemiticSort.sort(this.compareObjects)
+      // console.log(scriptSemiticSort)
+      return scriptSemiticSort
+    },
+    scriptAboutList: function () {
+      // console.log(scriptSemiticSort)
+      var scriptList = this.scriptsIndic.concat(this.scriptsSemitic).concat([this.getScriptObject('RussianCyrillic'), this.getScriptObject('IPA')])
+      scriptList.sort(this.compareObjects)
+      return scriptList.filter(x => x.value !== 'Latn' || x.value !== 'Type').filter(x => !['Hebr', 'Thaa', 'Arab-Ur', 'Arab-Pa'].includes(x.value))
+    },
     scriptIndicList: function () {
       return this.scriptsIndic.map(x => x.value)
+    },
+    semiticLatinList: function () {
+      return this.semiticLatin.map(x => x.value)
+    },
+    scriptLatinList: function () {
+      return this.scriptsLatin.map(x => x.value)
+    },
+    scriptSemiticList: function () {
+      return this.scriptsSemitic.map(x => x.value)
+    },
+    scriptSemiticListAll: function () {
+      return this.scriptSemiticList.concat(['Latn', 'Type', 'Urdu', 'Thaana', 'Shahmukhi', 'Hebrew', 'ISO259', 'ISO233', 'HebrewSBL'])
     },
     compounds: function () {
       var compounds = []
@@ -2425,8 +3318,10 @@
       return 0
     },
     getScriptObject: function (name) {
-      for (const s of this.scripts) {
+      // console.log('gettingObject')
+      for (const s of this.scriptsAll) {
         if (s.value === name) {
+          // console.log(s)
           return s
         }
       }
@@ -2436,7 +3331,7 @@
       return { label: '', value: '' }
     },
     getScriptObjectLabel: function (label) {
-      for (const s of this.scripts) {
+      for (const s of this.scriptsAll) {
         if (s.label === label) {
           return s
         }
@@ -2460,7 +3355,8 @@
     getDescription: function (script, link = true) {
       var desc
       var omniext
-
+      console.log('description')
+      console.log(script)
       if (script.value === 'Sundanese' || script.value === 'Ariyaka') {
         omniext = '.php'
       } else {
@@ -2576,6 +3472,14 @@
         return 'sundapura'
       } else if (postOptions.includes('kawitan') && tgt === 'Pallava') {
         return 'kawitan'
+      } else if (postOptions.includes('estrangelasyriac') && tgt === 'Syrc') {
+        return 'estrangelasyriac'
+      } else if (postOptions.includes('easternsyriac') && tgt === 'Syrc') {
+        return 'easternsyriac'
+      } else if (postOptions.includes('westernsyriac') && tgt === 'Syrc') {
+        return 'westernsyriac'
+      } else if (postOptions.includes('olddogra') && tgt === 'Dogra') {
+        return 'olddogra'
       } else if (tgt === 'Oriya' && (String(outputText).includes('॒') || String(outputText).includes('᳚') ||
           String(outputText).includes('॑'))) {
         return 'oriyavedic'
@@ -2621,7 +3525,7 @@
       return Math.floor(Math.random() * (max - min + 1)) + min
     },
     scriptRandom: function () {
-      return this.scriptsIndic[this.getRandomInt(0, this.scriptsIndic.length - 1)]
+      return this.scriptAboutList[this.getRandomInt(0, this.scriptAboutList.length - 1)]
     },
     checkDiacritics: function (Strng) {
       var diac = false
@@ -2634,6 +3538,11 @@
 
       return diac
     },
+    checkDiacriticsSemitic: function (Strng, script) {
+      var chars = ['ڤ', 'ڨ', 'پ']
+
+      return chars.includes(Strng) && script === 'Arab'
+    },
     convertAsync: function (src, tgt, txt, sourcePreserve, optionsPost, optionsPre) {
       return new Promise(resolve => {
         var data = {
@@ -2645,6 +3554,25 @@
           preOptions: optionsPre
         }
         this.apiCall.post('/convert', data)
+          .then(function (response) {
+            resolve(response.data)
+          })
+          .catch(function (error) {
+            console.log(error)
+          })
+      })
+    },
+    convertXMLAsync: function (src, tgt, txt, sourcePreserve, optionsPost, optionsPre) {
+      return new Promise(resolve => {
+        var data = {
+          source: src,
+          target: tgt,
+          text: txt,
+          nativize: !sourcePreserve,
+          postOptions: optionsPost,
+          preOptions: optionsPre
+        }
+        this.apiCall.post('/convert_xml', data)
           .then(function (response) {
             resolve(response.data)
           })

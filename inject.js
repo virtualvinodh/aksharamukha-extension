@@ -13,7 +13,7 @@ var postOptionsList = pars.postOptionsList
 var preOptionsList = pars.preOptionsList
 var outputClass = pars.outputClass
 
-var scriptsLTR = ['Urdu', 'Thaana', 'HanifiRohingya']
+var scriptsLTR = ['Urdu', 'Thaana', 'HanifiRohingya', 'Arab', 'Arab-Fa']
 
 if (document.readyState == 'complete') {
   setTimeout(function() {
